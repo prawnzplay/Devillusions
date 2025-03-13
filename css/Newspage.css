@@ -1,0 +1,77 @@
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background: #fdfdfd;
+    }
+    header {
+      position: relative;
+      background-color: #e951b0;
+      padding: 10px 20px;
+      border-bottom: 1px solid #ddd;
+    }
+    /* Back button now as an image with bubble text */
+    .back-button {
+      position: absolute;
+      left: 50px;
+      top: 40px;
+      cursor: pointer;
+      width: 100px;
+    }
+    /* Container for article and ad */
+    .container {
+      display: grid;
+      grid-template-columns: 3fr 1fr;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+    /* Article container styling similar to gossip homepage */
+    .article-container {
+      background-color: #fff0f4;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 20px;
+    }
+    article h1 {
+      margin-bottom: 20px;
+      font-family: 'Press Start 2P', sans-serif;
+ font-size: 1.2rem;
+      color: #ff69b4;
+    }
+    /* Each section of the article with a title */
+    .article-section {
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #ff69b4;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+    }
+    article p {
+      margin: 0;
+    }
+    /* Inline images styling */
+    article img.article-photo {
+      display: block;
+      max-width: 100%;
+      margin: 20px 0;
+
+
+      border: 1px solid #ccc;
+    }
+    .ad-container {
+      background-color: #e951b0;
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+margin-top: 40px;
+margin-bottom: 400px;
+
+    }
+    

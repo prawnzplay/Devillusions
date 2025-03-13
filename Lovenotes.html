@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lovenotes</title>
+  <!-- Import the same CSS used by Newspage -->
+  <link rel="stylesheet" href="css/Newspage.css" />
+  <!-- (Optional) Google Fonts if you want "Press Start 2P" or others -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Caveat&display=swap"
+    rel="stylesheet"
+  />
+</head>
+<body>
+  <!-- Same pink header with back button -->
+  <header>
+    <!-- Use the same bubble back image as on the news page -->
+    <img
+      class="back-button"
+      src="images/back.png"
+      alt="Back"
+      onclick="window.location.href='gossiptest.html'"
+    />
+  </header>
+
+  <!-- Main container just like in Newspage.html -->
+  <div class="container" style="grid-template-columns: 1fr;">
+    <!-- Single-column layout override (optional) -->
+    <div class="article-container">
+      <!-- Page Title -->
+      <h1>Join the Club, Show Us Some Love 💖</h1>
+
+      <!-- Submission Section -->
+      <section class="article-section">
+        <p>
+          Pour your heart out, whisper your secrets, or just say hi—your message
+          will live on in the Hall of Lovenotes!
+        </p>
+        <form id="lovenote-form" style="margin-top: 20px;">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your Name (Optional)"
+            style="display: block; width: 100%; margin-bottom: 10px; padding: 10px;"
+          />
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Type your lovenote here..."
+            rows="4"
+            style="display: block; width: 100%; margin-bottom: 10px; padding: 10px;"
+          ></textarea>
+         
+          <button
+            type="submit"
+            style="
+              padding: 10px 20px;
+              background-color: #ff69b4;
+              border: none;
+              border-radius: 5px;
+              color: #fff;
+              cursor: pointer;
+              font-family: 'Press Start 2P', sans-serif;
+            "
+          >
+            Seal it with a Kiss 💋
+          </button>
+        </form>
+      </section>
+
+      <!-- Pinned Lovenote Section -->
+      <section class="article-section" style="border: 2px solid gold; padding: 15px;">
+        <h4 class="section-title">Pinned Lovenote</h4>
+        <p style="font-family: 'Caveat', cursive; font-size: 1.3rem; color: #e951b0;">
+          "Your love lights up the darkest corners of our digital hearts!"
+        </p>
+        <p style="text-align: right; color: #555;">- Devillusions Fan</p>
+      </section>
+
+      <!-- Hall of Lovenotes -->
+      <section class="article-section">
+        <h4 class="section-title">Hall of Lovenotes</h4>
+        <div id="messages" style="margin-top: 15px;">
+          <!-- Example loveno

@@ -1,0 +1,189 @@
+/* Base styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff9fb; /* Soft, warm background */
+  color: #333;
+}
+
+/* Header and Navigation */
+header {
+  background-color: #e951b0;
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.site-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-family: 'Press Start 2P', cursive;
+}
+.site-nav ul li a.active,
+.site-nav ul li a:hover {
+  text-decoration: underline;
+}
+.main-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 10px;
+}
+
+/* Submission Section */
+.submission-section {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fff0f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.submission-prompt {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: #e951b0;
+  text-align: center;
+  margin-bottom: 15px;
+}
+#lovenote-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#lovenote-form input[type="text"],
+#lovenote-form textarea {
+  padding: 10px;
+  border: 2px solid #e951b0;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+#lovenote-form input[type="file"] {
+  padding: 5px;
+}
+#lovenote-form button {
+  padding: 10px;
+  background-color: #ff69b4;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+#lovenote-form button:hover {
+  background-color: #e951b0;
+}
+
+/* Pinned Lovenote Section */
+.pinned-section {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff0f4;
+  border: 2px solid gold;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.pinned-section h2 {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  color: #e951b0;
+}
+.pinned-note {
+  text-align: center;
+  padding: 10px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: #e951b0;
+}
+.pinned-note .note-author {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 5px;
+}
+
+/* Message Wall */
+.message-wall {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+.message-wall h2 {
+  text-align: center;
+  font-family: 'Press Start 2P', cursive;
+  color: #e951b0;
+}
+.messages {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+}
+.message {
+  background: #fff0f4;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-family: 'Caveat', cursive;
+  position: relative;
+}
+.message .note-text {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.message .note-meta {
+  font-size: 0.8rem;
+  color: #555;
+  margin-top: 5px;
+  text-align: right;
+}
+
+/* Footer Navigation */
+footer {
+  text-align: center;
+  padding: 20px;
+}
+.home-button {
+  padding: 10px 20px;
+  background-color: #ff69b4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Press Start 2P', cursive;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.home-button:hover {
+  background-color: #e951b0;
+}
+
+/* Animated Hearts */
+.heart {
+  position: fixed;
+  color: #ff69b4;
+  font-size: 2rem;
+  animation: float 2s ease-out forwards;
+  pointer-events: none;
+  z-index: 1000;
+}
+@keyframes float {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1.5);
+  }
+}
