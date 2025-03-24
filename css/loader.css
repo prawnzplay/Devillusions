@@ -1,0 +1,54 @@
+/* Full-screen dissolve overlay */
+#dissolve-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;  /* You can change this to a noise texture or your choice */
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* When active, apply the dissolve animation */
+.dissolve-active {
+  animation: dissolve 0.8s forwards;
+}
+
+/* Keyframes for a dissolve effect */
+@keyframes dissolve {
+  0% {
+    opacity: 0;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(8px);
+  }
+}
+
+#tv-static {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../images/purplestatic.gif') center center / cover no-repeat;
+
+  z-index: 9999 ;
+  opacity: 0 ;  /* Default hidden */
+  pointer-events: none;
+  transition: opacity 1s ease-out ;
+}
+
+#tv-static.static-active {
+  opacity: 1 
+}
+
+
+

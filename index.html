@@ -3,73 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vintage Valentine</title>
-<link rel="stylesheet" href="css\style1.css">
-
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/home.css">
+  <!-- Loader Stylesheet (optional) -->
+  <link rel="stylesheet" href="css/loader.css">
 </head>
 <body>
-  <video autoplay muted loop id="staticBackground">
-    <source src="images\static.mp4" type="video/mp4">
-  </video>
+  <div id="tv-static"></div>
 
-  <!-- Logo Image -->
-  <img src="images\logo3.png" alt="Devillusions Logo" id="logo">
+  <!-- Background Video -->
+  <img id="staticBackground" src="images/gossipbackground2.jpg" alt="Background">
 
-  <marquee>Cob Salad video coming soon!</marquee>
-
-  <div class="content-container">
+  <!-- Spinning Logo (Centered & Smaller) -->
+  <div class="center-container">
+    <video id="spinningLogo" autoplay loop muted playsinline>
+      <source src="images/logospin_final_output.webm" type="video/webm">
+    </video>
+  
+    <!-- TABS -->
     <div class="tabs">
-      <a href="videos.html"><img src="images\videos.png" alt="Videos" class="tab-icon"></a>
-      <a href="musicpage.html"><img src="images\music.png" alt="Music" class="tab-icon"></a>
-      <a href="gallery.html"><img src="images\gallery.png" alt="Gallery" class="tab-icon"></a>
-      <a href="gossiptest.html"><img src="images\news.png" alt="News" class="tab-icon"></a>
-    
-    </div>
-
-    <div class="flipbook-container">
-  <div class="page active">
-    <div class="video-container">
-      <iframe 
-        src="https://www.youtube.com/embed/Puuejbcv20s?si=LxGDIKskgdc_N6-H" 
-        title="YouTube video player" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin" 
-        allowfullscreen>
-	loading="eager">
-      </iframe>
+      <a href="videos.html"><img src="images/Videotab.png" alt="Videos" class="tab-icon"></a>
+      <a href="musicpage.html"><img src="images/musictab.png" alt="Music" class="tab-icon"></a>
+      <a href="gossiptest.html"><img src="images/gossiptab.png" alt="News" class="tab-icon"></a>
+      <a href="games.html"><img src="images/gametab.png" alt="Gallery" class="tab-icon"></a>
     </div>
   </div>
-      <div class="page">Page 2: Exclusive behind-the-scenes content</div>
-      <div class="page">Page 3: Rare photos and artwork</div>
-      <div class="page">Page 4: Secret messages just for you</div>
-
-      <div class="flipbook-controls">
-        <button id="prevBtn">Previous</button>
-        <button id="nextBtn">Next</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const pages = document.querySelectorAll('.page');
-    let currentPage = 0;
-
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      if (currentPage > 0) {
-        pages[currentPage].classList.remove('active');
-        currentPage--;
-        pages[currentPage].classList.add('active');
-      }
-    });
-
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      if (currentPage < pages.length - 1) {
-        pages[currentPage].classList.remove('active');
-        currentPage++;
-        pages[currentPage].classList.add('active');
-      }
-    });
-  </script>
+  
+  <script src="js/homepageStatic.js"></script>
 </body>
 </html>

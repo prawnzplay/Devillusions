@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <title>Devillusions News & Gossip</title>
-  <!-- Link to your main style sheet -->
-  <link rel="stylesheet" href="css\style.css">
-  <!-- Page-Specific Styles -->
-  <style>
+  
+
+body {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
     /* Two-column layout for the main container: news (left), ads (right) */
     .main-container {
       display: grid;
@@ -23,7 +28,6 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       padding: 20px;
     }
-
     /* Flipbook Pages for News */
     .page {
       display: none;
@@ -41,7 +45,6 @@
       padding: 15px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-
     /* Controls for the news flipbook */
     .flipbook-controls {
       text-align: center;
@@ -60,7 +63,6 @@
     .flipbook-controls button:hover {
       background-color: #ff1493;
     }
-
     /* Bottom section: 2 columns, Ad on the LEFT, Heavenly Fortune on the RIGHT */
     .bottom-section {
       display: grid;
@@ -77,10 +79,8 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       padding: 20px;
     }
-
     /* Mobile-Specific Adjustments */
     @media (max-width: 768px) {
-      /* Convert the two-column layouts to single column */
       .main-container {
         grid-template-columns: 1fr;
         margin: 20px auto;
@@ -89,7 +89,6 @@
         grid-template-columns: 1fr;
         margin: 10px auto;
       }
-      /* Make navigation tabs scrollable */
       .tabs {
         display: flex;
         overflow-x: auto;
@@ -99,10 +98,9 @@
       }
       .tab-icon {
         flex: 0 0 auto;
-        width: 40px; /* Reduce icon size for mobile */
+        width: 40px;
         margin-right: 10px;
       }
-      /* Adjust logo and background images for smaller screens */
       #logo {
         max-width: 80%;
         height: auto;
@@ -113,7 +111,6 @@
         width: 100%;
         height: auto;
       }
-      /* Optionally, adjust marquee font size */
       marquee {
         font-size: 1.2em;
       }
@@ -121,38 +118,36 @@
   </style>
 </head>
 <body>
-  <!-- Background and logo from your style.css -->
-  <img id="staticBackground" src="images/your-bg.png" alt="Background">
-  <img id="logo" src="images\Newslogo.png" alt="Devillusions Logo">
+     
+  <div id="dissolve-overlay"></div>
+  
+  <!-- Loader Script -->
+  <script src="js/staticloader.js"></script>
+  
+  <!-- Background and Logo -->
+  <img id="staticBackground" src="images/gossipbackground2.jpg" alt="Background">
+   <!-- Spinning Logo (Centered & Smaller) -->
+   <video id="spinningLogo" autoplay loop muted playsinline>
+    <source src="images/logospin.webm" type="video/webm">
+  </video>
 
   <marquee>✨  News, Gossip & More ✨</marquee>
 
   <!-- Top Navigation Tabs -->
   <div class="tabs">
-    <a href="index.html">
-      <img class="tab-icon" src="images\home.png" alt="Home">
-    </a>
-    <a href="videos.html">
-      <img class="tab-icon" src="images\videos.png" alt="Videos">
-    </a>
-    <a href="musicpage.html">
-      <img class="tab-icon" src="images\music.png" alt="Music">
-    </a>
-    <a href="gallery.html">
-      <img class="tab-icon" src="images\gallery.png" alt="Gallery">
-    </a>
-    <a href="lovenotes.html">
-      <img class="tab-icon" src="images\lovenotes.png" alt="Lovenotes">
-    </a>
-    <!-- Add more links as needed -->
+    <a href="index.html"><img class="tab-icon" src="images/home.png" alt="Home"></a>
+    <a href="videos.html"><img class="tab-icon" src="images/videos.png" alt="Videos"></a>
+    <a href="musicpage.html"><img class="tab-icon" src="images/music.png" alt="Music"></a>
+    <a href="gallery.html"><img class="tab-icon" src="images/gallery.png" alt="Gallery"></a>
+    <a href="lovenotes.html"><img class="tab-icon" src="images/lovenotes.png" alt="Lovenotes"></a>
   </div>
 
-  <!-- Main Container (2 columns: News + Static Ad) -->
+  <!-- Main Container: News Flipbook -->
   <div class="main-container">
-    <!-- LEFT: News Flipbook -->
+    <!-- LEFT: News Section -->
     <div class="news-section">
       <div id="newsFlipbook">
-        <!-- Page 1 (3 articles) -->
+        <!-- Page 1 -->
         <div class="page active">
           <div class="article-box">
             <h3><a href="articles/LeastCoolTechCompany.html">Apple Is Officially the Least Cool Tech Company—And We Need to Talk About It</a></h3>
@@ -167,7 +162,7 @@
             <p>We need to talk about the most annoying people on the internet right now: the AI haters. You know them. You’ve seen them. The ones who treat using AI for anything like it’s a war crime. The ones who seethe with rage when someone dares to generate an image, get writing help, or use AI to code a simple function.</p>
           </div>
         </div>
-        <!-- Page 2 (3 articles) -->
+        <!-- Page 2 -->
         <div class="page">
           <div class="article-box">
             <h3>💌 Chain Emails Trend</h3>
@@ -183,7 +178,6 @@
           </div>
         </div>
       </div>
-
       <!-- News Flipbook Controls -->
       <div class="flipbook-controls">
         <button id="newsPrevBtn">Previous</button>
@@ -191,7 +185,7 @@
       </div>
     </div>
 
-    <!-- RIGHT: Static Ad Section -->
+    <!-- RIGHT: Ads Section -->
     <div class="ads-section">
       <div class="ad-box">
         <h3>Ad: Pink Glitter Rollerblades</h3>
@@ -201,15 +195,12 @@
     </div>
   </div>
 
-  <!-- Bottom Section (2 columns: Ad on the LEFT, Heavenly Fortune on the RIGHT) -->
+  <!-- Bottom Section: Ads and Heavenly Fortune -->
   <div class="bottom-section">
-    <!-- LEFT: Another Ad or Banner Space -->
     <div class="ad-container">
       <h3>📺 Extra Ad Space</h3>
       <p>Place your banner or sponsor content here!</p>
     </div>
-
-    <!-- RIGHT: Heavenly Fortune -->
     <div class="game-container">
       <h3>😇 Heavenly Fortune 😇</h3>
       <button id="fortune-button">Receive Your Blessing</button>
@@ -219,14 +210,12 @@
 
   <!-- Scripts for News Flipbook -->
   <script>
-    // NEWS FLIPBOOK
     let currentNewsPage = 0;
     const newsPages = document.querySelectorAll('#newsFlipbook .page');
 
     function showNewsPage(index) {
       newsPages.forEach((page, i) => {
-        page.classList.remove('active');
-        if (i === index) page.classList.add('active');
+        page.classList.toggle('active', i === index);
       });
     }
 

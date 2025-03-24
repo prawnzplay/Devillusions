@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Devillusions Music</title>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <!-- Link to your main stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Page-Specific Styles (inspired by the Gossip page) -->
+  <style>
+    /* Main container with two columns */
+    .main-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+    /* Left and right containers styled like Gossip page containers */
+    .platforms-section, .music-player-section {
+      background-color: #ffe4e1;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 20px;
+    }
+    /* Style for the platform links */
+    .platform-link {
+      display: block;
+      background-color: #fff;
+      color: purple;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      padding: 10px;
+      margin: 10px 0;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .platform-link:hover {
+      background-color: #ff69b4;
+      color: #fff;
+    }
+    /* Button styling for the music player section */
+    .music-player-section button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-family: "Audiowide", sans-serif;
+    }
+    .music-player-section button:hover {
+      background-color: #ff1493;
+    }
+    /* Bottom section: Two side-by-side ads */
+    .bottom-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    /* Reuse ad-container style from your main CSS or define here */
+    .ad-container {
+      background-color: #ffe4e1;
+      color: #800080;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Static Loader Example</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <title>Static Loader Example</title>
+  <link rel="stylesheet" href="css/loader.css">
+  <!-- TV static effect overlay (must appear on every page) -->
+  <div id="tv-static"></div>
+
+  <script src="js/staticloader.js"></script>
+  <img id="staticBackground" src="images/gossipbackground2.jpg" alt="Background">
+  <img id="logo" src="images/musiclogo.png" alt="Devillusions Music Logo">
+  
+  <marquee id="nowPlaying">🎶 Now Playing: Nothing Yet! 🎶</marquee>
+  
+  <div class="tabs">
+    <a href="index.html"><img class="tab-icon" src="images/home.png" alt="Home"></a>
+    <a href="videos.html"><img class="tab-icon" src="images/videos.png" alt="Videos"></a>
+    <a href="gallery.html"><img class="tab-icon" src="images/gallery.png" alt="Gallery"></a>
+    <a href="gossiptest.html"><img class="tab-icon" src="images/news.png" alt="News"></a>
+    <a href="lovenotes.html"><img class="tab-icon" src="images/lovenotes.png" alt="Lovenotes"></a>
+  </div>
+  
+  <div class="main-container">
+    <!-- LEFT: Streaming Platform Links -->
+    <div class="platforms-section">
+      <h2>Find Us Here:</h2>
+      <a class="platform-link" href="https://soundcloud.com/thedevillusions" target="_blank">🔊 SoundCloud</a>
+      <a class="platform-link" href="https://bandcamp.com/thedevillusions" target="_blank">🎵 Bandcamp</a>
+      <a class="platform-link" href="https://spotify.com/thedevillusions" target="_blank">🎧 Spotify</a>
+	<a class="platform-link" href="https://applemusic.com/thedevillusions" target="_blank">🔊 Apple Music</a>
+    </div>
+    
+    <!-- RIGHT: Music Player -->
+    <div class="music-player-section">
+      <h2>Top Tracks</h2>
+      <iframe id="musicPlayer" width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/YOUR_TRACK_ID"></iframe>
+      <button onclick="changeTrack('YOUR_NEW_TRACK_ID', 'New Track Name')">Play New Track</button>
+    </div>
+  </div>
+  
+  <!-- Bottom Section: Two Ads -->
+  <div class="bottom-section">
+    <div class="ad-container">
+      <h3>Sponsored by Totally Real Records</h3>
+      <p>🎤 The hottest label of the 2000s… or at least we say so.</p>
+    </div>
+    <div class="ad-container">
+      <h3>Limited Edition Merch Drop</h3>
+      <p>🛍️ Check out our exclusive merch, available now!</p>
+    </div>
+  </div>
+  
+  <script>
+    function changeTrack(trackId, trackName) {
+      document.getElementById('musicPlayer').src = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${trackId}`;
+      document.getElementById('nowPlaying').innerText = `🎶 Now Playing: ${trackName} 🎶`;
+    }
+  </script>
+</body>
+</html>

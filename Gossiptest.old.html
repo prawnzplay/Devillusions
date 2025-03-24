@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Devillusions News & Gossip</title>
+  <!-- Link to your main style sheet -->
+  <link rel="stylesheet" href="css\style.css">
+  <!-- Page-Specific Styles -->
+  <style>
+    /* Two-column layout for the main container: news (left), ads (right) */
+    .main-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr; /* Left is wider for news */
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 40px auto;
+    }
+    .news-section, .ads-section {
+      background-color: #F7B7DB;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 20px;
+    }
+
+    /* Flipbook Pages for News */
+    .page {
+      display: none;
+      margin-bottom: 20px;
+    }
+    .page.active {
+      display: block;
+    }
+    .article-box, .ad-box {
+      background-color: #fff;
+      color: #800080;
+      border: 2px solid #ff69b4;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Controls for the news flipbook */
+    .flipbook-controls {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .flipbook-controls button {
+      background-color: #ff69b4 !important;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 10px;
+      font-family: "Audiowide", sans-serif;
+    }
+    .flipbook-controls button:hover {
+      background-color: #ff1493;
+    }
+
+    /* Bottom section: 2 columns, Ad on the LEFT, Heavenly Fortune on the RIGHT */
+    .bottom-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin: 20px auto;
+    }
+    .ad-container, .game-container {
+      background-color: #F7B7DB;
+      color: #800080;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      padding: 20px;
+    }
+
+    /* Mobile-Specific Adjustments */
+    @media (max-width: 768px) {
+      /* Convert the two-column layouts to single column */
+      .main-container {
+        grid-template-columns: 1fr;
+        margin: 20px auto;
+      }
+      .bottom-section {
+        grid-template-columns: 1fr;
+        margin: 10px auto;
+      }
+      /* Make navigation tabs scrollable */
+      .tabs {
+        display: flex;
+        overflow-x: auto;
+        padding: 10px;
+        background: #F7B7DB;
+        border-radius: 10px;
+      }
+      .tab-icon {
+        flex: 0 0 auto;
+        width: 40px; /* Reduce icon size for mobile */
+        margin-right: 10px;
+      }
+      /* Adjust logo and background images for smaller screens */
+      #logo {
+        max-width: 80%;
+        height: auto;
+        display: block;
+        margin: 10px auto;
+      }
+      #staticBackground {
+        width: 100%;
+        height: auto;
+      }
+      /* Optionally, adjust marquee font size */
+      marquee {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Static Loader Example</title>
+  <link rel="stylesheet" href="css/loader.css">
+
+  <!-- TV static effect overlay (must appear on every page) -->
+  <div id="tv-static"></div>
+
+
+  <script src="js/staticloader.js"></script>
+<!-- Background and logo from your style.css -->
+  <img id="staticBackground" src="images/gossipbackground2.jpg" alt="Background">
+  <img id="logo" src="images\Newslogo.png" alt="Devillusions Logo">
+
+  <marquee>✨  News, Gossip & More ✨</marquee>
+
+  <!-- Top Navigation Tabs -->
+  <div class="tabs">
+    <a href="index.html">
+      <img class="tab-icon" src="images\home.png" alt="Home">
+    </a>
+    <a href="videos.html">
+      <img class="tab-icon" src="images\videos.png" alt="Videos">
+    </a>
+    <a href="musicpage.html">
+      <img class="tab-icon" src="images\music.png" alt="Music">
+    </a>
+    <a href="gallery.html">
+      <img class="tab-icon" src="images\gallery.png" alt="Gallery">
+    </a>
+    <a href="lovenotes.html">
+      <img class="tab-icon" src="images\lovenotes.png" alt="Lovenotes">
+    </a>
+    <!-- Add more links as needed -->
+  </div>
+
+  <!-- Main Container (2 columns: News + Static Ad) -->
+  <div class="main-container">
+    <!-- LEFT: News Flipbook -->
+    <div class="news-section">
+      <div id="newsFlipbook">
+        <!-- Page 1 (3 articles) -->
+        <div class="page active">
+          <div class="article-box">
+            <h3><a href="articles/LeastCoolTechCompany.html">Apple Is Officially the Least Cool Tech Company—And We Need to Talk About It</a></h3>
+            <p>Remember when owning an iPhone meant you were ahead of the curve? When pulling out that sleek little rectangle gave you an air of sophistication? When having a green text bubble was basically social exile? Well, wake up babes, because those days are over. Apple is officially the lamest tech brand out there—and it’s their own fault.</p>
+          </div>
+          <div class="article-box">
+            <h3><a href="articles/SmokingIsCool.html">Smoking Hot: The Secret Cultural Cost of Quitting Cigarettes</a></h3>
+            <p>Ladies, let’s talk about loss. Not the five pounds before summer kind. Not the ex who still watches your Instagram stories kind. No, today, we’re mourning something bigger—something stolen from us in the name of “public health” and “better choices.”!</p>
+          </div>
+          <div class="article-box">
+            <h3><a href="news-details.html">AI Haters, Touch Grass: You’re Not Special for Avoiding the Future</a></h3>
+            <p>We need to talk about the most annoying people on the internet right now: the AI haters. You know them. You’ve seen them. The ones who treat using AI for anything like it’s a war crime. The ones who seethe with rage when someone dares to generate an image, get writing help, or use AI to code a simple function.</p>
+          </div>
+        </div>
+        <!-- Page 2 (3 articles) -->
+        <div class="page">
+          <div class="article-box">
+            <h3>💌 Chain Emails Trend</h3>
+            <p>Sending chain emails is back in style—brace for Y2K nostalgia!</p>
+          </div>
+          <div class="article-box">
+            <h3>🎶 Devillusions' Latest Track</h3>
+            <p>The new single is causing heart palpitations worldwide—it's that good.</p>
+          </div>
+          <div class="article-box">
+            <h3>🕵️ Secret Show Rumors</h3>
+            <p>Devillusions might host a surprise underground concert. Stay tuned!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- News Flipbook Controls -->
+      <div class="flipbook-controls">
+        <button id="newsPrevBtn">Previous</button>
+        <button id="newsNextBtn">Next</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: Static Ad Section -->
+    <div class="ads-section">
+      <div class="ad-box">
+        <h3>Ad: Pink Glitter Rollerblades</h3>
+        <p>Grab these limited-edition rollerblades before they're gone!</p>
+        <p><a href="quiz.html">Take Our Quiz Now!</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Section (2 columns: Ad on the LEFT, Heavenly Fortune on the RIGHT) -->
+  <div class="bottom-section">
+    <!-- LEFT: Another Ad or Banner Space -->
+    <div class="ad-container">
+      <h3>📺 Extra Ad Space</h3>
+      <p>Place your banner or sponsor content here!</p>
+    </div>
+
+    <!-- RIGHT: Heavenly Fortune -->
+    <div class="game-container">
+      <h3>😇 Heavenly Fortune 😇</h3>
+      <button id="fortune-button">Receive Your Blessing</button>
+      <p id="fortune-result"></p>
+    </div>
+  </div>
+
+  <!-- Scripts for News Flipbook -->
+  <script>
+    // NEWS FLIPBOOK
+    let currentNewsPage = 0;
+    const newsPages = document.querySelectorAll('#newsFlipbook .page');
+
+    function showNewsPage(index) {
+      newsPages.forEach((page, i) => {
+        page.classList.remove('active');
+        if (i === index) page.classList.add('active');
+      });
+    }
+
+    document.getElementById('newsPrevBtn').addEventListener('click', () => {
+      currentNewsPage = (currentNewsPage - 1 + newsPages.length) % newsPages.length;
+      showNewsPage(currentNewsPage);
+    });
+
+    document.getElementById('newsNextBtn').addEventListener('click', () => {
+      currentNewsPage = (currentNewsPage + 1) % newsPages.length;
+      showNewsPage(currentNewsPage);
+    });
+  </script>
+
+  <!-- Heavenly Fortune Script -->
+  <script>
+    function generateFortune() {
+      if (window.hasReceivedFortune) {
+        const punishments = [
+          "💀 You lose 100 Neopoints for your greed! 💀",
+          "🔥 Your internet speed has been cursed with dial-up delay! 🔥",
+          "📵 All your chain emails will now return to sender! 📵",
+          "🕸️ A pop-up ad from 2002 now haunts your screen! 🕸️"
+        ];
+        const randomPunishment = punishments[Math.floor(Math.random() * punishments.length)];
+        document.getElementById('fortune-result').innerText = `🚫 DON'T BE GREEDY! 🚫\n${randomPunishment}`;
+        return;
+      }
+      const fortunes = [
+        "✨ You will rediscover your forgotten MySpace account! ✨",
+        "😇 An old Neopets pet will return to your side! 😇",
+        "🌟 A free CD-ROM will come into your life unexpectedly. 🌟",
+        "💫 Your CRT monitor grants you 20% more wisdom today! 💫",
+        "📻 A rare mixtape will soon be found at a garage sale. 📻"
+      ];
+      const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+      document.getElementById('fortune-result').innerText = randomFortune;
+      window.hasReceivedFortune = true;
+    }
+    document.getElementById('fortune-button').addEventListener('click', generateFortune);
+  </script>
+</body>
+</html>

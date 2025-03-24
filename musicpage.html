@@ -4,10 +4,25 @@
   <meta charset="UTF-8">
   <title>Devillusions Music</title>
   <link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
-  <!-- Link to your main stylesheet -->
+  
+  <!-- Main stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+  
+  <!-- Loader Stylesheet (for static loader effect) -->
+  <link rel="stylesheet" href="css/loader.css">
+  
   <!-- Page-Specific Styles (inspired by the Gossip page) -->
   <style>
+body {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
     /* Main container with two columns */
     .main-container {
       display: grid;
@@ -76,7 +91,15 @@
   </style>
 </head>
 <body>
-  <img id="staticBackground" src="images/your-bg.png" alt="Background">
+
+
+  <div id="dissolve-overlay"></div>
+  
+  <!-- Loader script -->
+  <script src="js/staticloader.js"></script>
+  
+  <!-- Other content starts here -->
+  <img id="staticBackground" src="images/gossipbackground2.jpg" alt="Background">
   <img id="logo" src="images/musiclogo.png" alt="Devillusions Music Logo">
   
   <marquee id="nowPlaying">🎶 Now Playing: Nothing Yet! 🎶</marquee>
@@ -96,7 +119,7 @@
       <a class="platform-link" href="https://soundcloud.com/thedevillusions" target="_blank">🔊 SoundCloud</a>
       <a class="platform-link" href="https://bandcamp.com/thedevillusions" target="_blank">🎵 Bandcamp</a>
       <a class="platform-link" href="https://spotify.com/thedevillusions" target="_blank">🎧 Spotify</a>
-	<a class="platform-link" href="https://applemusic.com/thedevillusions" target="_blank">🔊 Apple Music</a>
+      <a class="platform-link" href="https://applemusic.com/thedevillusions" target="_blank">🔊 Apple Music</a>
     </div>
     
     <!-- RIGHT: Music Player -->

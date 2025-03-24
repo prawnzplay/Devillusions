@@ -1,6 +1,23 @@
  <style>
+
+
     /* General Styles */
-    body {
+    * Center the spinning logo, make it wide, push it down */
+#spinningLogo {
+  display: block;
+  /* This pushes it ~120px from the top (adjust as you like) */
+  margin: 100px auto 0 auto;
+  
+  /* Make it fill ~80% of the page width (or whatever you prefer) */
+  width: 80%; 
+  max-width: 1200px; /* Optional limit so it doesn't get too huge on big screens */
+  height: auto;      /* Keep aspect ratio */
+
+    pointer-events: none; /* This makes the video ignore mouse clicks */
+  
+}
+
+    {
       background-color: #FF69B4;
       color: purple;
       font-family: "Comic Sans MS", cursive, sans-serif;
@@ -124,7 +141,7 @@
 }
 
 .ad-container {
-  background-color: #ffe4e1;
+  background-color: #F7B7DB;
   color: #800080;
   padding: 25px;
   border-radius: 10px;
@@ -135,7 +152,7 @@
   margin-top: 20px;
 }
 .game-container {
-  background-color: #ffe4e1;
+  background-color: #F7B7DB;
   color: #800080;
   padding: 20px;
   border-radius: 10px;
@@ -146,7 +163,7 @@ width: 90%;       /* Adjust as needed */
   margin: 0 auto;    /* Center it if desired */
 }
 .ads-section {
-  background-color: #ffe4e1;
+  background-color: #F7B7DB;
   padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -169,7 +186,5 @@ text-align: center;
   margin: 0 auto;    /* Center it horizontally */
 height: 550px;
 }
-
-
 
   </style>

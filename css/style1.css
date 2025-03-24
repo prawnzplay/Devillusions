@@ -1,13 +1,6 @@
  <style>
     /* General Styles */
-    body {
-      background-color: #FF69B4;
-      color: purple;
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
+    
     #staticBackground {
       position: fixed;
       top: 0;
