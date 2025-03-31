@@ -57,6 +57,7 @@ html, body {
 
 /* Optional: Remove any top margins on the spinning logo if needed */
 #spinningLogo {
+    background: transparent;  
   margin: 0 auto;
   width: 80%;
   max-width: 1200px;
