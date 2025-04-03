@@ -32,22 +32,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-// Stronger iOS detection (including iPads pretending to be Macs)
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
-              (navigator.userAgent.includes("Macintosh") && "ontouchend" in document);
-
-const video = document.getElementById("spinningLogo");
-const fallback = document.getElementById("spinningLogoFallback");
-
-if (video && fallback) {
-  if (isIOS) {
-    console.log("🍎 iOS detected — forcing fallback PNG.");
-    video.style.display = "none";
-    fallback.style.display = "block";
-  } else {
-    console.log("🎥 Non-iOS — using WebM video.");
-  }
-}
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("homepageStatic.js loaded");
+  
+    // iOS detection (includes iPads pretending to be Macs)
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent) ||
+                  (navigator.userAgent.includes("Macintosh") && "ontouchend" in document);
+  
+    const video = document.getElementById("spinningLogo");
+    const fallback = document.getElementById("spinningLogoFallback");
+  
+    if (video && fallback) {
+      if (isIOS) {
+        console.log("🍎 iOS device detected — using fallback PNG.");
+        video.style.display = "none";
+        fallback.style.display = "block";
+      } else {
+        console.log("✅ Non-iOS — using WebM video.");
+        video.style.display = "block";
+        fallback.style.display = "none";
+      }
+    } else {
+      console.warn("🚫 Missing spinningLogo or fallback element.");
+    }
+  });
+  
 
 
 });
