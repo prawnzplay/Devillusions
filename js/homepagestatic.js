@@ -32,12 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // iOS fallback logic:
-  // More robust detection for iOS (including iPads reporting as MacIntel)
-  const isIOS =
-    /iPad|iPhone|iPod/.test(navigator.platform) ||
-    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  console.log("isIOS:", isIOS, navigator.platform, navigator.maxTouchPoints);
+  // More robust iOS detection using userAgent:
+  const userAgent = navigator.userAgent || "";
+  const isIOS = /iPad|iPhone|iPod/.test(userAgent) ||
+                (userAgent.includes("Mac OS X") && "ontouchend" in document);
+  console.log("isIOS:", isIOS, userAgent);
 
   const video = document.getElementById("spinningLogo");
   const fallback = document.getElementById("spinningLogoFallback");
@@ -56,4 +55,3 @@ document.addEventListener("DOMContentLoaded", function () {
     console.warn("🚫 Missing spinningLogo or fallback element.");
   }
 });
-
