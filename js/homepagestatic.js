@@ -32,23 +32,22 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
- // Detect iOS devices (iPhone, iPad, iPod)
- const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
- (navigator.userAgent.includes("Macintosh") && "ontouchend" in document);
+// Stronger iOS detection (including iPads pretending to be Macs)
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+              (navigator.userAgent.includes("Macintosh") && "ontouchend" in document);
 
 const video = document.getElementById("spinningLogo");
 const fallback = document.getElementById("spinningLogoFallback");
 
 if (video && fallback) {
-  const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
-
-  if (isIOS || window.innerWidth < 1025 || !canPlayWebM) {
-    console.log("📱 iOS or small screen or no WebM support — using fallback PNG.");
+  if (isIOS) {
+    console.log("🍎 iOS detected — forcing fallback PNG.");
     video.style.display = "none";
     fallback.style.display = "block";
   } else {
-    console.log("✅ WebM with transparency is supported — using video.");
+    console.log("🎥 Non-iOS — using WebM video.");
   }
 }
+
 
 });
