@@ -108,7 +108,7 @@ html, body {
   }
 
   .tab-icon {
-    width: clamp(60px, 35vw, 100px);); /* scale icons smaller for phone screens */
+    width: clamp(60px, 35vw, 100px); /* scale icons smaller for phone screens */
   }
   .center-container {
     display: flex;
