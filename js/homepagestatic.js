@@ -32,19 +32,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // ✅ WebM fallback for small screens or unsupported browsers
-  const video = document.getElementById("spinningLogo");
-  const fallback = document.getElementById("spinningLogoFallback");
+ // Detect iOS devices (iPhone, iPad, iPod)
+ const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+ (navigator.userAgent.includes("Macintosh") && "ontouchend" in document);
 
-  if (video && fallback) {
-    const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
+const video = document.getElementById("spinningLogo");
+const fallback = document.getElementById("spinningLogoFallback");
 
-    if (window.innerWidth < 1025 || !canPlayWebM) {
-      console.log("📱 Using fallback PNG on small screens or no WebM support.");
-      video.style.display = "none";
-      fallback.style.display = "block";
-    }
+if (video && fallback) {
+  const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
+
+  if (isIOS || window.innerWidth < 1025 || !canPlayWebM) {
+    console.log("📱 iOS or small screen or no WebM support — using fallback PNG.");
+    video.style.display = "none";
+    fallback.style.display = "block";
   } else {
-    console.warn("⚠️ Could not find spinning logo or fallback element.");
+    console.log("✅ WebM with transparency is supported — using video.");
   }
+}
+
 });
