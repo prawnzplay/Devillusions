@@ -32,26 +32,4 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // More robust iOS detection using userAgent:
-  const userAgent = navigator.userAgent || "";
-  const isIOS = /iPad|iPhone|iPod/.test(userAgent) ||
-                (userAgent.includes("Mac OS X") && "ontouchend" in document);
-  console.log("isIOS:", isIOS, userAgent);
-
-  const video = document.getElementById("spinningLogo");
-  const fallback = document.getElementById("spinningLogoFallback");
-
-  if (video && fallback) {
-    if (isIOS) {
-      console.log("🍎 iOS device detected — forcing fallback PNG.");
-      video.style.display = "none";
-      fallback.style.display = "block";
-    } else {
-      console.log("✅ Non-iOS — using WebM video.");
-      video.style.display = "block";
-      fallback.style.display = "none";
-    }
-  } else {
-    console.warn("🚫 Missing spinningLogo or fallback element.");
-  }
 });
