@@ -108,8 +108,18 @@ html, body {
   }
 
   .tab-icon {
-    width: clamp(40px, 15vw, 80px); /* scale icons smaller for phone screens */
+    width: clamp(60px, 35vw, 100px);); /* scale icons smaller for phone screens */
   }
+  .center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* take up full vertical space */
+    padding-top: 5vh;  /* optional: give a little breathing room */
+    box-sizing: border-box;
+  }
+
 }
 
 
