@@ -35,4 +35,19 @@ document.addEventListener("DOMContentLoaded", function() {
       }, 400); // Adjust to match your CSS animation duration
     });
   });
+  // ✅ WebM fallback for iOS
+  const video = document.getElementById('spinningLogo');
+  const fallback = document.getElementById('spinningLogoFallback');
+
+  const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
+
+  if (!canPlayWebM) {
+    video.style.display = 'none';
+    fallback.style.display = 'block';
+    fallback.style.width = '80%';
+    fallback.style.maxWidth = '1200px';
+    fallback.style.margin = '0 auto';
+    fallback.style.display = 'block';
+  }
+
 });
