@@ -1,53 +1,50 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   console.log("homepageStatic.js loaded");
+
   const tvStatic = document.getElementById("tv-static");
   if (!tvStatic) {
     console.error("No element with id 'tv-static' found!");
     return;
   }
 
-  // When the homepage loads, show the static effect
+  // Show static effect on load
   console.log("Showing static effect on load");
   tvStatic.classList.add("static-active");
 
-  // After a delay, remove the effect to reveal the page content
   setTimeout(() => {
     console.log("Hiding static effect after load");
     tvStatic.classList.remove("static-active");
-  }, 2000); // Adjust duration (in ms) to taste
+  }, 2000);
 
-  // Add click listeners to all internal links for exit effect
+  // Click-to-exit animation
   document.querySelectorAll("a").forEach(link => {
-    // Remove the hostname check if you're testing on file:// or localhost inconsistently:
-    // if (link.hostname !== window.location.hostname) return;
-    link.addEventListener("click", function(e) {
-      e.preventDefault(); // Prevent immediate navigation
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
       const href = this.getAttribute("href");
       console.log("Link clicked. Navigating to:", href);
 
-      // Show the static effect before leaving the page
       tvStatic.classList.add("static-active");
 
-      // After a short delay, navigate to the new page
       setTimeout(() => {
         console.log("Navigating now");
         window.location.href = href;
-      }, 400); // Adjust to match your CSS animation duration
+      }, 400);
     });
   });
-  // ✅ WebM fallback for iOS
-  const video = document.getElementById('spinningLogo');
-  const fallback = document.getElementById('spinningLogoFallback');
 
-  const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
+  // ✅ WebM fallback for small screens or unsupported browsers
+  const video = document.getElementById("spinningLogo");
+  const fallback = document.getElementById("spinningLogoFallback");
 
-  if (!canPlayWebM) {
-    video.style.display = 'none';
-    fallback.style.display = 'block';
-    fallback.style.width = '80%';
-    fallback.style.maxWidth = '1200px';
-    fallback.style.margin = '0 auto';
-    fallback.style.display = 'block';
+  if (video && fallback) {
+    const canPlayWebM = video.canPlayType('video/webm; codecs="vp8, vorbis"');
+
+    if (window.innerWidth < 1025 || !canPlayWebM) {
+      console.log("📱 Using fallback PNG on small screens or no WebM support.");
+      video.style.display = "none";
+      fallback.style.display = "block";
+    }
+  } else {
+    console.warn("⚠️ Could not find spinning logo or fallback element.");
   }
-
 });
