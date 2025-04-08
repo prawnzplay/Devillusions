@@ -1,0 +1,46 @@
+{
+  "id": "angel-vs-devil",
+  "title": "Are You Angelcore or Devilcore?",
+  "questions": [
+    {
+      "text": "Pick a time of day:",
+      "options": [
+        { "text": "Morning dew ☀️", "value": "angel" },
+        { "text": "Midnight storm 🌩️", "value": "devil" }
+      ]
+    },
+    {
+      "text": "What’s your ideal accessory?",
+      "options": [
+        { "text": "Lace gloves 🧤", "value": "angel" },
+        { "text": "Studded belt 🖤", "value": "devil" }
+      ]
+    },
+    {
+      "text": "How do you handle drama?",
+      "options": [
+        { "text": "I journal ✍️", "value": "angel" },
+        { "text": "I stir the pot 🫖", "value": "devil" }
+      ]
+    },
+    {
+      "text": "Favorite color palette:",
+      "options": [
+        { "text": "Pastels & pearls 🎀", "value": "angel" },
+        { "text": "Flame red & black 🧨", "value": "devil" }
+      ]
+    },
+    {
+      "text": "Your weekend plan:",
+      "options": [
+        { "text": "Picnic in a field 🌼", "value": "angel" },
+        { "text": "Warehouse rave 💣", "value": "devil" }
+      ]
+    }
+  ],
+  "results": {
+    "angel": "🦋 You're Angelcore, baby. Soft, aesthetic, and full of feelings.",
+    "devil": "😈 You’re Devilcore — edgy, powerful, and always plotting.",
+    "both": "😇😈 You’re a little of both... the ultimate aesthetic bicon."
+  }
+}

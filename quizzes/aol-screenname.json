@@ -1,0 +1,50 @@
+{
+  "id": "aol-screenname",
+  "title": "What Would Your AOL Screenname Be?",
+  "questions": [
+    {
+      "text": "What do you do right after logging into AOL?",
+      "options": [
+        { "text": "Check if *they* are online 😳", "value": "emo" },
+        { "text": "Change your font to hot pink Comic Sans", "value": "y2k" }
+      ]
+    },
+    {
+      "text": "Pick your AIM status icon:",
+      "options": [
+        { "text": "A dark rose with dripping glitter 🌹✨", "value": "emo" },
+        { "text": "A spinning skull ☠️", "value": "chaotic" }
+      ]
+    },
+    {
+      "text": "What’s your screenname starter pack?",
+      "options": [
+        { "text": "Multiple x’s and underscores", "value": "emo" },
+        { "text": "A random fruit and your birth year", "value": "y2k" }
+      ]
+    },
+    {
+      "text": "Your friend just logged off without saying bye. What do you do?",
+      "options": [
+        { "text": "Write a cryptic away message about it...", "value": "emo" },
+        { "text": "Message their crush something wild from their account 😈", "value": "chaotic" }
+      ]
+    },
+    {
+      "text": "Pick your chatroom:",
+      "options": [
+        { "text": "“Hackers & Hotties”", "value": "chaotic" },
+        { "text": "“Hotmail Hotties Lounge”", "value": "y2k" }
+      ]
+    }
+  ],
+  "results": {
+    "emo": "💔 Your screenname is xXSweetAngel420Xx — you're full of feelings, mystery, and dramatic away messages.",
+    "chaotic": "🔥 Your screenname is H8rSlayer69 — you bring the chaos, the caps lock, and the AIM drama.",
+    "y2k": "✨ Your screenname is BubblezNGlitter — you're pure Y2K sparkle with a side of sass and pink pixels.",
+    "emo+chaotic": "🖤 Your screenname is XxRebelSoulxX — a dangerously hot blend of angst and mischief.",
+    "emo+y2k": "🌸 Your screenname is GlitterTears13 — emotional, aesthetic, and always extra.",
+    "chaotic+y2k": "💿 Your screenname is BratzKillazzz — part Bratz doll, part unhinged, all style.",
+    "emo+chaotic+y2k": "👑 Your screenname is AIMQueenOfChaos — you're the entire buddy list experience in one unholy screenname."
+  }
+}

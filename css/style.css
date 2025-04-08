@@ -1,196 +1,261 @@
- <style>
+/* =========================
+   GLOBAL / BACKGROUND
+========================= */
 
-
-    /* General Styles */
-    * Center the spinning logo, make it wide, push it down */
-#spinningLogo {
-  display: block;
-  /* This pushes it ~120px from the top (adjust as you like) */
-  margin: 100px auto 0 auto;
-  
-  /* Make it fill ~80% of the page width (or whatever you prefer) */
-  width: 80%; 
-  max-width: 1200px; /* Optional limit so it doesn't get too huge on big screens */
-  height: auto;      /* Keep aspect ratio */
-
-    pointer-events: none; /* This makes the video ignore mouse clicks */
-  
-}
-
-#spinningLogo {
-  margin: 0 auto;
-  width: 80%;
-  max-width: 1200px;
-}
-    {
-      background-color: #FF69B4;
-      color: purple;
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-    }
-    #staticBackground {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-    /* Logo Styling */
-    #logo {
-      display: block;
-      margin: 40px auto;
-      width: 80%;
-      max-width: 700px;
-    }
-    /* Marquee */
-    marquee {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin-top: 0;
-    }
-    /* Tabs and Icons */
-    .tabs {
-      width: 100%;
-      background-color: transparent;
-      padding: 5px 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 60px;
-      margin-bottom: 0;
-    }
-    .tabs a {
-      text-decoration: none;
-      display: block;
-    }
-    .tabs a:hover {
-      background-color: transparent;
-    }
-.tab-icon {
-  height: 38px;
-  max-height: 38px;
-  width: auto;
-  transition: transform 0.2s ease-in-out;
-  object-fit: contain;
-}
-
-    .tab-icon:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0px 0px 10px #FF69B4);
-    }
-    /* Content Container */
-    .content-container {
-      width: 90%;
-      max-width: 1000px;
-      background-color: #1c1b1f;
-      padding: 10px;
-      margin: 50px auto;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-    .flipbook-container {
-      width: 70%;
-      max-width: 600px;
-      margin: 20px auto;
-      position: relative;
-    }
-    
-    .page {
-      display: none;
-      background-color: white;
-      color: black;
-      padding: 0px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-    .page.active {
-      display: block;
-    }
-    .flipbook-controls {
-      margin-top: 10px;
-      text-align: center;
-    }
-    .flipbook-controls button {
-      background-color: #ff69b4 !important;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin: 0 10px;
-	font-family: "Audiowide", sans-serif;
-    }
-    .flipbook-controls button:hover {
-      background-color: #ff1493;
-    }
-
-    }
-.video-container {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%; /* Keeps the video at a 16:9 ratio */
-  height: 0;
-}
-
-.video-container iframe {
-  position: absolute;
+/* Background Image */
+#staticBackground {
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
-.ad-container {
-  background-color: #ffe4e1;
-  color: #800080;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Logo */
+#logo {
+  display: block;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Marquee */
+.marquee-wrapper {
+  width: 90%;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  overflow: hidden;
+  position: relative;
+  /* Instead of a fixed height, allow it to scale: */
+  padding: 5px 0;
+}
+
+.marquee-text {
+  font-size: clamp(16px, 4vw, 24px);
+  font-weight: bold;
+  color: #531749;
+  white-space: nowrap;
+  /* For mobile, you might disable the animation to let the text wrap nicely */
+  animation: none;
   text-align: center;
+  position: relative;
 }
-.quiz-container {
-  margin-top: 20px;
+
+@keyframes marqueeBounce {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: calc(100% - 300px); /* Adjust this to match actual text width */
+  }
 }
-.game-container {
-  background-color: #ffe4e1;
-  color: #800080;
-  padding: 20px;
+
+
+/* Navigation Tabs */
+.tabs {
+  width: 100%;
+  padding: 5px 0;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin-bottom: 0;
+}
+
+.tabs a {
+  text-decoration: none;
+}
+
+.tab-icon {
+  width: clamp(24px, 5vw, 30px);
+  height: auto;
+}
+
+.tab-icon:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 10px #fc53ad);
+}
+
+/* =========================
+   MAIN CONTAINER (2 columns)
+========================= */
+.main-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* left = 2fr, right = 1fr */
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+/* LEFT COLUMN: stack news + bottom-items vertically */
+.left-column {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px; /* space between news and bottom-items */
+}
+
+/* Pink outer box for news */
+.news-section {
+  background-color: #ffe4e1; 
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-width: 90%;       /* Adjust as needed */
-  max-width: 500px;  /* For example, to limit its maximum width */
-  margin: 0 auto;    /* Center it if desired */
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
-.ads-section {
-  background-color: #ffe4e1;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  width: 90%;       /* Adjust as needed */
-  max-width: 500px;  /* For example, to limit its maximum width */
-  margin: 0 auto;    /* Center it if desired */
-}
-.ad-box {
-  background-color: #fff;        /* White background */
-  color: #800080;               /* Text color */
-  border: 2px solid #ff69b4;    /* Pink border */
+
+/* White inner box for news */
+.news-inner {
+  background-color: #fff; 
   border-radius: 8px;
-  margin-bottom: 15px;          /* Spacing below each ad */
-  padding: 50px;                /* Internal white space */
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-text-align: center; 
-/* If you want to control the overall width of the white box: */
-  max-width: 400px;  /* Adjust to desired width */
-  margin: 0 auto;    /* Center it horizontally */
-height: 550px;
+  padding: 20px;
+  color: #4b004b;
 }
 
-  </style>
+/* Flipbook Pages */
+.page {
+  display: none;
+  margin-bottom: 20px;
+}
+.page.active {
+  display: block;
+}
+
+/* Center each article's title + text */
+.article-box {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Article Title Links */
+.article-box h3 a {
+  font-family: "Chewy", cursive;
+  text-decoration: none;
+  color: #fc53ad;
+  font-size: 1.4em;
+}
+
+.article-box h3 a:hover {
+  text-decoration: underline;
+}
+
+/* Article Paragraphs */
+.article-box p {
+  font-size: 1em;
+  line-height: 1.5em;
+  margin: 10px 0;
+}
+
+/* Flipbook Controls */
+.flipbook-controls {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* 
+   BOTTOM ITEMS 
+   - fill same width as news 
+   - each item flexes to half the space
+*/
+.bottom-items {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between; /* fill the entire width */
+}
+
+.ad-container,
+.game-container {
+  background-color: #ffe4e1; 
+  color: #fc53ad;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  padding: 20px;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  flex: 1; /* each box expands to half the available width */
+}
+
+/* RIGHT COLUMN: Quiz container (pink) + white inner */
+.quiz-container {
+  background-color: #ffe4e1; 
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.quiz-inner {
+  background-color: #fff; 
+  border-radius: 8px;
+  padding: 20px;
+  color: #4b004b;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+}
+
+/* Quiz Controls */
+.quiz-controls {
+  margin-top: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    margin: 10px auto;
+    width: 95%;
+  }
+
+  .tabs {
+    display: flex;
+    overflow-x: auto;
+    padding: 5px;
+    background: #ffe4e1;
+    border-radius: 10px;
+    gap: 5px; /* reduce gap for smaller screens */
+  }
+  
+  .tab-icon {
+    width: clamp(24px, 5vw, 30px); /* dynamic scaling */
+    height: auto;
+    margin-right: 5px;
+  }
+  
+  .marquee-wrapper {
+    padding: 5px 0;
+    margin-bottom: 10px;
+  }
+  
+  .marquee-text {
+    font-size: clamp(16px, 4vw, 24px);
+    white-space: normal;
+    text-align: center;
+    animation: none;
+  }
+
+  /* Scale down inner containers for articles, ads, quiz, etc. */
+  .news-inner,
+  .quiz-inner,
+  .ad-container,
+  .game-container {
+    padding: 10px;
+    font-size: clamp(0.8rem, 2vw, 1rem); /* adjusts text size dynamically */
+  }
+  
+  .article-box h3 a {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+  
+  .article-box p {
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    line-height: 1.3em;
+  }
+  
+  /* Center the quiz container and keep it from spanning too wide */
+  .quiz-container {
+    margin: 20px auto 0;
+    max-width: 600px;
+  }
+}
