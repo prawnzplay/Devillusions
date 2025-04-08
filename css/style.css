@@ -207,41 +207,51 @@
     margin: 10px auto;
     width: 95%;
   }
-
+  
   .tabs {
     display: flex;
     overflow-x: auto;
     padding: 5px;
     background: #ffe4e1;
     border-radius: 10px;
-    gap: 5px; /* reduce gap for smaller screens */
+    gap: 5px; /* reduced gap for smaller screens */
   }
   
+  /* Increased the navigation tab icon size */
   .tab-icon {
-    width: clamp(24px, 5vw, 30px); /* dynamic scaling */
+    width: clamp(40px, 8vw, 60px);
     height: auto;
-    margin-right: 5px;
+    margin-right: 10px;
   }
   
   .marquee-wrapper {
-    padding: 5px 0;
+    padding: 0px 0;
     margin-bottom: 10px;
   }
   
+  /* Re-enable marquee animation on mobile */
   .marquee-text {
     font-size: clamp(16px, 4vw, 24px);
-    white-space: normal;
+    font-weight: bold;
+    color: #531749;
+    white-space: nowrap;
     text-align: center;
-    animation: none;
+    position: relative;
+    animation: marqueeBounceMobile 6s ease-in-out infinite alternate;
   }
-
-  /* Scale down inner containers for articles, ads, quiz, etc. */
+  
+  /* New keyframes for mobile marquee animation using transform */
+  @keyframes marqueeBounceMobile {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(20%); }
+  }
+  
   .news-inner,
   .quiz-inner,
   .ad-container,
   .game-container {
     padding: 10px;
-    font-size: clamp(0.8rem, 2vw, 1rem); /* adjusts text size dynamically */
+    font-size: clamp(0.8rem, 2vw, 1rem);
   }
   
   .article-box h3 a {
@@ -253,7 +263,6 @@
     line-height: 1.3em;
   }
   
-  /* Center the quiz container and keep it from spanning too wide */
   .quiz-container {
     margin: 20px auto 0;
     max-width: 600px;
