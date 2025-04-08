@@ -211,25 +211,25 @@
   .tabs {
     display: flex;
     overflow-x: auto;
-    padding: 5px;
+    padding: 10px;
     background: #ffe4e1;
     border-radius: 10px;
-    gap: 5px; /* reduced gap for smaller screens */
+    gap: 15px; /* increased gap for more spacing */
   }
   
-  /* Increased the navigation tab icon size */
+  /* Increase nav tab icon size */
   .tab-icon {
-    width: clamp(40px, 8vw, 60px);
+    width: clamp(50px, 10vw, 80px);
     height: auto;
-    margin-right: 10px;
+    margin-right: 15px;
   }
   
   .marquee-wrapper {
-    padding: 0px 0;
+    padding: 5px 0;
     margin-bottom: 10px;
   }
   
-  /* Re-enable marquee animation on mobile */
+  /* Update marquee animation for balanced movement */
   .marquee-text {
     font-size: clamp(16px, 4vw, 24px);
     font-weight: bold;
@@ -237,13 +237,12 @@
     white-space: nowrap;
     text-align: center;
     position: relative;
-    animation: marqueeBounceMobile 6s ease-in-out infinite alternate;
+    animation: marqueeBounceMobile 6s ease-in-out infinite;
   }
   
-  /* New keyframes for mobile marquee animation using transform */
   @keyframes marqueeBounceMobile {
-    0% { transform: translateX(0%); }
-    100% { transform: translateX(20%); }
+    0%, 100% { transform: translateX(-10%); }
+    50% { transform: translateX(10%); }
   }
   
   .news-inner,
