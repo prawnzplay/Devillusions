@@ -89,7 +89,7 @@
               <div class="article-box">
                 <h3>
                   <a href="articles/SmokingIsCool.html">
-                    Smoking Hot: The Secret Cultural Cost of Quitting Cigarettes
+                    Smoking Hot: The Cultural Cost of Quitting Cigarettes
                   </a>
                 </h3>
                 <p>
@@ -103,7 +103,7 @@
               <div class="article-box">
                 <h3>
                   <a href="news-details.html">
-                    AI Haters, Touch Grass: You’re Not Special for Avoiding the Future
+                    AI Haters, Touch Grass!
                   </a>
                 </h3>
                 <p>
@@ -205,36 +205,118 @@
   
   <!-- Heavenly Fortune Script -->
   <script>
-    function generateFortune() {
-      if (window.hasReceivedFortune) {
-        const punishments = [
-          "💀 You lose 100 Neopoints for your greed! 💀",
-          "🔥 Your internet speed has been cursed with dial-up delay! 🔥",
-          "📵 All your chain emails will now return to sender! 📵",
-          "🕸️ A pop-up ad from 2002 now haunts your screen! 🕸️"
-        ];
-        const randomPunishment = punishments[Math.floor(Math.random() * punishments.length)];
-        document.getElementById("fortune-result").innerText = `🚫 DON'T BE GREEDY! 🚫\n${randomPunishment}`;
-        return;
+    // Wait until the DOM is fully loaded.
+    document.addEventListener('DOMContentLoaded', function() {
+  
+      // Get the haunted popup element by its ID.
+      const hauntedPopup = document.getElementById("haunted-popup");
+  
+      // Function to display the haunted popup and animate it bouncing around the screen.
+      function showHauntedPopup() {
+        // Reveal the popup.
+        hauntedPopup.style.display = "block";
+        
+        // Initial position and speed.
+        let x = 50;
+        let y = 50;
+        let dx = 3;
+        let dy = 3;
+        
+        // Function to update the popup's position.
+        function movePopup() {
+          const screenWidth = window.innerWidth;
+          const screenHeight = window.innerHeight;
+          const popupWidth = hauntedPopup.offsetWidth;
+          const popupHeight = hauntedPopup.offsetHeight;
+          
+          // Update coordinates.
+          x += dx;
+          y += dy;
+          
+          // Reverse horizontal direction if hitting left or right boundary.
+          if (x + popupWidth > screenWidth || x < 0) {
+            dx *= -1;
+          }
+          
+          // Reverse vertical direction if hitting top or bottom boundary.
+          if (y + popupHeight > screenHeight || y < 0) {
+            dy *= -1;
+          }
+          
+          // Set the new position.
+          hauntedPopup.style.left = x + "px";
+          hauntedPopup.style.top = y + "px";
+        }
+        
+        // Begin moving the popup every 50 milliseconds.
+        setInterval(movePopup, 50);
       }
-      const fortunes = [
-        "✨ You will rediscover your forgotten MySpace account! ✨",
-        "😇 An old Neopets pet will return to your side! 😇",
-        "🌟 A free CD-ROM will come into your life unexpectedly. 🌟",
-        "💫 Your CRT monitor grants you 20% more wisdom today! 💫",
-        "📻 A rare mixtape will soon be found at a garage sale. 📻"
-      ];
-      const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
-      document.getElementById("fortune-result").innerText = randomFortune;
-      window.hasReceivedFortune = true;
-    }
-    document.getElementById("fortune-button").addEventListener("click", generateFortune);
+    
+      // The updated generateFortune function with haunted popup integration.
+      function generateFortune() {
+        if (window.hasReceivedFortune) {
+          const punishments = [
+            "💀 You lose 100 Neopoints for your greed! 💀",
+            "🔥 Your internet speed has been cursed with dial-up delay! 🔥",
+            "📵 All your chain emails will now return to sender! 📵",
+            "🕸️ A pop-up ad from 2002 now haunts your screen! 🕸️"
+          ];
+          const randomPunishment = punishments[Math.floor(Math.random() * punishments.length)];
+          document.getElementById("fortune-result").innerText = "🚫 DON'T BE GREEDY! 🚫\n" + randomPunishment;
+          
+          // Trigger the haunted popup if a blessing has already been received.
+          showHauntedPopup();
+          return;
+        }
+        
+        const fortunes = [
+          "✨ You will rediscover your forgotten MySpace account! ✨",
+          "😇 An old Neopets pet will return to your side! 😇",
+          "🌟 A free CD-ROM will come into your life unexpectedly. 🌟",
+          "💫 Your CRT monitor grants you 20% more wisdom today! 💫",
+          "📻 A rare mixtape will soon be found at a garage sale. 📻"
+        ];
+        const randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+        document.getElementById("fortune-result").innerText = randomFortune;
+        window.hasReceivedFortune = true;
+      }
+      
+      // Attach generateFortune to the fortune button click event.
+      document.getElementById("fortune-button").addEventListener("click", generateFortune);
+    });
   </script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Trigger the advertisement popup 10 seconds after the page loads.
+      setTimeout(function(){
+        document.getElementById('advert-popup').style.display = 'block';
+      }, 10000); // 10,000 milliseconds = 10 seconds
+    });
+  </script>
+  
   
   <!-- Quiz Engine -->
   <script src="js/quizEngine.js"></script>
   <script>
     loadQuiz("angel-vs-devil"); // load first quiz on page load
   </script>
+
+<div id="haunted-popup" style="display:none; position:fixed; top:50px; left:50px; padding:20px; background:#000; color:#fff; border:2px dashed #fc53ad; z-index:9999; font-family:'Orbitron', sans-serif;">
+  👻 Haunted Pop-Up: You've been cursed for your greed!
+</div>
+
+<div id="advert-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:300px; padding:20px; background:#ff00ff; color:#000; border:3px solid #00ffff; z-index:9999; font-family:'Orbitron', sans-serif; box-shadow:0 0 10px #00ffff;">
+  <h2 style="margin-top:0;">❌ERROR 2001❌:</h2>
+  <p style="margin:10px 0;">
+    Too Much Gossip Detected!
+    Your hard drive is overheating from all this tea.
+    Please forward this site to 3 friends to cool it down 💾
+  </p>
+  <button onclick="document.getElementById('advert-popup').style.display='none';" style="background:#00ffff; color:#000; border:none; padding:5px 10px; font-family:'Orbitron', sans-serif; cursor:pointer;">
+    Close
+  </button>
+</div>
+
 </body>
 </html>
