@@ -97,6 +97,34 @@
       border: 1px solid #ddd;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    } 
+
+    .survey-ad {
+      text-align: center;
+      font-family: 'Syne', Arial, sans-serif;
+      margin-top: 10px;
+    }
+    
+    .survey-ad p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+      color: #333;
+    }    
+    
+    .y2k-survey-box {
+      background-color: #fff0f4;
+      padding: 10px;
+      border: 2px dotted #ff69b4;
+      position: relative;
+    }
+    
+    .y2k-survey-box img.y2k-top,
+    .y2k-survey-box img.y2k-bottom {
+      display: block;
+      width: 100%;
+      max-height: 40px;
+      object-fit: contain;
+      pointer-events: none;
     }
 
     @media (max-width: 768px) {

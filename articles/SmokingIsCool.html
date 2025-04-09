@@ -17,7 +17,7 @@
       <article>
 
         <h1>Smoking Hot: The Secret Cultural Cost of Quitting Cigarettes</h1>
-        <img class="article-photo" src="images/pinkphone.jpg" alt="Photograph 1">
+        <img class="article-photo" src="../images/NewsPics/SmokeHeader.jpeg" alt="Photograph 1">
 
         <section class="article-section">
           <h4 class="section-title">We’re talking about smoking.</h4>
@@ -43,7 +43,7 @@
         <section class="article-section">
           <h4 class="section-title">We Lost Our Sex Appeal</h4>
           <p>
-            Let’s be honest: nothing on earth was sexier than a woman who knew how to smoke a cigarette properly. Think Kate Moss, Brigitte Bardot, old-school Hollywood icons—a little mysterious, a little reckless, the ultimate I do what I want energy. Now, we’ve been convinced that our sultry, cigarette-wielding alter-egos were a public health crisis. Instead, we’re left with strawberry-scented vapes and green juice. Excuse me while I yawn.
+            Let’s be honest: smoking is sexy. Think Kate Moss, Brigitte Bardot, old-school Hollywood icons—a little mysterious, a little reckless, the ultimate I do what I want energy. Now, we’ve been convinced that our sultry, cigarette-wielding alter-egos were a public health crisis. Instead, we’re left with strawberry-scented vapes and green juice. Excuse me while I yawn.
           </p>
         </section>
 
@@ -58,9 +58,33 @@
 
       </article>
     </div>
-    <aside class="ad-container">
-      <img src="images/sadad.jpg" alt="Advertisement" style="width: 100%;">
-      <img src="images/T9ad.jpg" alt="Advertisement" style="width: 100%;">
+    <aside class="ad-wrapper">
+      <div class="ad-box">
+        <img src="../images/NewsPics/SmokeAd.png" alt="Advertisement 1" style="width: 100%;">
+      </div>
+      <div class="ad-box y2k-survey-box">
+     
+      
+        <div class="survey-ad">
+          <p>Would you let a hot French person peer-pressure you into smoking a cigarette?</p>
+          <button id="survey-yes">Yes</button>
+          <button id="survey-no">No</button>
+          <p id="survey-feedback"></p>
+        </div>
+        <link class="y2k-bottom" src=<a href="https://www.glitter-graphics.com"><img src="http://dl6.glitter-graphics.net/pub/857/857646a751a4xz9m.gif" width=76 height=155 border=0></a>
+      </div>
+    
+      
+      <script>
+        // Listen for clicks on the survey buttons
+        document.getElementById('survey-yes').addEventListener('click', function() {
+          document.getElementById('survey-feedback').textContent = "You’re valid. And possibly in a Godard film.";
+        });
+        document.getElementById('survey-no').addEventListener('click', function() {
+          document.getElementById('survey-feedback').textContent = "Powerful. But we know you’d flinch.";
+        });
+      </script>
+
     </aside>
   </div>
 </body>
