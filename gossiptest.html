@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gossip Page</title>
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Chewy&family=Syne&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Syne&display=swap" rel="stylesheet" />
   <!-- Main CSS -->
   <link rel="stylesheet" href="css/style.css" />
   <style>
@@ -17,7 +14,7 @@
       padding: 0;
       opacity: 0;
       animation: fadeIn 1s ease-in-out forwards;
-      font-family: "Orbitron", sans-serif; /* Default font */
+      font-family: "Orbitron", sans-serif;
     }
     @keyframes fadeIn {
       from { opacity: 0; }
@@ -38,10 +35,10 @@
   <!-- Logo -->
   <img id="logo" src="images/0001_trimmed5.png" alt="Devillusions Music Logo" />
   
- <!-- Marquee -->
-<div class="marquee-wrapper">
-  <div class="marquee-text">✨ News, Gossip & More ✨</div>
-</div>
+  <!-- Marquee -->
+  <div class="marquee-wrapper">
+    <div class="marquee-text">✨ News, Gossip & More ✨</div>
+  </div>
   
   <!-- Navigation Tabs -->
   <div class="tabs">
@@ -63,91 +60,17 @@
   <div class="main-container">
     <!-- LEFT COLUMN -->
     <div class="left-column">
-      
-      <!-- News (top) -->
+      <!-- Flipbook News Section -->
       <div class="news-section">
-        <div class="news-inner">
-          <div id="newsFlipbook">
-            <!-- Page 1 -->
-            <div class="page active">
-              <div class="article-box">
-                <h3>
-                  <a href="articles/LeastCoolTechCompany.html">
-                    Apple Is Officially the Least Cool Tech Company
-                  </a>
-                </h3>
-                <p>
-                  Remember when owning an iPhone meant you were ahead of the curve?
-                  When pulling out that sleek little rectangle gave you an air of
-                  sophistication? When having a green text bubble was basically
-                  social exile? Well, wake up babes, because those days are over.
-                  Apple is officially the lamest tech brand out there—and it’s
-                  their own fault.
-                </p>
-              </div>
-              
-              <div class="article-box">
-                <h3>
-                  <a href="articles/SmokingIsCool.html">
-                    Smoking Hot: The Cultural Cost of Quitting Cigarettes
-                  </a>
-                </h3>
-                <p>
-                  Ladies, let’s talk about loss. Not the five pounds before summer
-                  kind. Not the ex who still watches your Instagram stories kind. 
-                  No, today, we’re mourning something bigger—something stolen from
-                  us in the name of “public health” and “better choices.”
-                </p>
-              </div>
-              
-              <div class="article-box">
-                <h3>
-                  <a href="news-details.html">
-                    AI Haters, Touch Grass!
-                  </a>
-                </h3>
-                <p>
-                  We need to talk about the most annoying people on the internet right
-                  now: the AI haters. You know them. You’ve seen them. The ones who
-                  treat using AI for anything like it’s a war crime. The ones who
-                  seethe with rage when someone dares to generate an image, get writing
-                  help, or use AI to code a simple function.
-                </p>
-              </div>
-            </div>
-            
-            <!-- Page 2 -->
-            <div class="page">
-              <div class="article-box">
-                <h3>💌 Chain Emails Trend</h3>
-                <p>
-                  Sending chain emails is back in style—brace for Y2K nostalgia!
-                </p>
-              </div>
-              <div class="article-box">
-                <h3>🎶 Devillusions' Latest Track</h3>
-                <p>
-                  The new single is causing heart palpitations worldwide—it's that good.
-                </p>
-              </div>
-              <div class="article-box">
-                <h3>🕵️ Secret Show Rumors</h3>
-                <p>
-                  Devillusions might host a surprise underground concert. Stay tuned!
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Flipbook Controls -->
-          <div class="flipbook-controls">
-            <button id="newsPrevBtn">Previous</button>
-            <button id="newsNextBtn">Next</button>
-          </div>
-        </div><!-- .news-inner -->
-      </div><!-- .news-section -->
+        <div id="article-grid"></div>
+
+      <div class="flipbook-controls">
+        <button onclick="showPreviousPage()">Previous</button>
+        <button onclick="showNextPage()">Next</button>
+      </div>
+    </div>
       
-      <!-- Bottom Items (now fill same width as news) -->
+      <!-- Bottom Items -->
       <div class="bottom-items">
         <div class="ad-container y2k-lovenotes">
           <h3>💌 Public Displays of Affection 💌</h3>
@@ -162,97 +85,95 @@
           <button id="fortune-button">Receive Your Blessing</button>
           <p id="fortune-result"></p>
         </div>
-      </div><!-- .bottom-items -->
-      
+      </div>
     </div><!-- .left-column -->
     
     <!-- RIGHT COLUMN (Quiz) -->
     <div class="quiz-container">
       <div class="quiz-inner">
-        
         <div id="quiz-area"></div>
-        
         <div class="quiz-controls">
           <button onclick="loadPreviousQuiz()">←</button>
           <button onclick="loadNextQuiz()">→</button>
         </div>
-      </div><!-- .quiz-inner -->
+      </div>
     </div><!-- .quiz-container -->
     
   </div><!-- .main-container -->
   
-  <!-- News Flipbook Script -->
+  <!-- Script: Dynamic Flipbook from JSON Feed -->
   <script>
-    let currentNewsPage = 0;
-    const newsPages = document.querySelectorAll("#newsFlipbook .page");
+    let currentPage = 0;
+    const PAGE_SIZE = 3;  
+    let allArticles = [];
 
-    function showNewsPage(index) {
-      newsPages.forEach((page, i) => {
-        page.classList.toggle("active", i === index);
+    // Fetch the JSON feed (update the path to 'json/gossipFeed.json' if your file is inside a folder)
+    fetch('json/gossipFeed.json')
+      .then(response => response.json())
+      .then(data => {
+        allArticles = data;
+        renderArticles(); // render the first page
+      })
+      .catch(error => console.error("Error fetching articles:", error));
+
+    function renderArticles() {
+      const grid = document.getElementById('article-grid');
+      grid.innerHTML = '';  // Clear current content
+
+      // Calculate start and end indices for current page
+      const startIndex = currentPage * PAGE_SIZE;
+      const endIndex = startIndex + PAGE_SIZE;
+      const pageArticles = allArticles.slice(startIndex, endIndex);
+
+      // Create a card for each article in this page
+      pageArticles.forEach(article => {
+        const card = document.createElement('div');
+        card.className = 'article-card';
+        // Note: Only the title (and tagline) is clickable
+        card.innerHTML = `
+          <a href="${article.url}">
+            <h3>${article.title}</h3>
+            <p>${article.tagline}</p>
+          </a>
+        `;
+        grid.appendChild(card);
       });
     }
 
-    document.getElementById("newsPrevBtn").addEventListener("click", () => {
-      currentNewsPage = (currentNewsPage - 1 + newsPages.length) % newsPages.length;
-      showNewsPage(currentNewsPage);
-    });
+    function showNextPage() {
+      const totalPages = Math.ceil(allArticles.length / PAGE_SIZE);
+      currentPage = (currentPage + 1) % totalPages;
+      renderArticles();
+    }
 
-    document.getElementById("newsNextBtn").addEventListener("click", () => {
-      currentNewsPage = (currentNewsPage + 1) % newsPages.length;
-      showNewsPage(currentNewsPage);
-    });
+    function showPreviousPage() {
+      const totalPages = Math.ceil(allArticles.length / PAGE_SIZE);
+      currentPage = (currentPage - 1 + totalPages) % totalPages;
+      renderArticles();
+    }
   </script>
   
-  <!-- Heavenly Fortune Script -->
+  <!-- Heavenly Fortune Script (Unchanged) -->
   <script>
-    // Wait until the DOM is fully loaded.
     document.addEventListener('DOMContentLoaded', function() {
-  
-      // Get the haunted popup element by its ID.
       const hauntedPopup = document.getElementById("haunted-popup");
-  
-      // Function to display the haunted popup and animate it bouncing around the screen.
       function showHauntedPopup() {
-        // Reveal the popup.
         hauntedPopup.style.display = "block";
-        
-        // Initial position and speed.
-        let x = 50;
-        let y = 50;
-        let dx = 3;
-        let dy = 3;
-        
-        // Function to update the popup's position.
+        let x = 50, y = 50, dx = 3, dy = 3;
         function movePopup() {
           const screenWidth = window.innerWidth;
           const screenHeight = window.innerHeight;
           const popupWidth = hauntedPopup.offsetWidth;
           const popupHeight = hauntedPopup.offsetHeight;
-          
-          // Update coordinates.
-          x += dx;
-          y += dy;
-          
-          // Reverse horizontal direction if hitting left or right boundary.
-          if (x + popupWidth > screenWidth || x < 0) {
-            dx *= -1;
-          }
-          
-          // Reverse vertical direction if hitting top or bottom boundary.
-          if (y + popupHeight > screenHeight || y < 0) {
-            dy *= -1;
-          }
-          
-          // Set the new position.
+          x += dx; y += dy;
+          if (x + popupWidth > screenWidth || x < 0) dx *= -1;
+          if (y + popupHeight > screenHeight || y < 0) dy *= -1;
           hauntedPopup.style.left = x + "px";
           hauntedPopup.style.top = y + "px";
         }
-        
-        // Begin moving the popup every 50 milliseconds.
         setInterval(movePopup, 50);
       }
     
-      // The updated generateFortune function with haunted popup integration.
       function generateFortune() {
         if (window.hasReceivedFortune) {
           const punishments = [
@@ -263,12 +184,9 @@
           ];
           const randomPunishment = punishments[Math.floor(Math.random() * punishments.length)];
           document.getElementById("fortune-result").innerText = "🚫 DON'T BE GREEDY! 🚫\n" + randomPunishment;
-          
-          // Trigger the haunted popup if a blessing has already been received.
           showHauntedPopup();
           return;
         }
-        
         const fortunes = [
           "🧃 Your next hyperfixation is already loading… please stand by… 🧃",
           "🖥️ Someone’s gonna slide into your DMs like it’s MSN Messenger circa 2002.",
@@ -287,42 +205,38 @@
         window.hasReceivedFortune = true;
       }
       
-      // Attach generateFortune to the fortune button click event.
       document.getElementById("fortune-button").addEventListener("click", generateFortune);
     });
   </script>
   
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Trigger the advertisement popup 10 seconds after the page loads.
       setTimeout(function(){
         document.getElementById('advert-popup').style.display = 'block';
-      }, 10000); // 10,000 milliseconds = 10 seconds
+      }, 10000);
     });
   </script>
-  
   
   <!-- Quiz Engine -->
   <script src="js/quizEngine.js"></script>
   <script>
-    loadQuiz("angel-vs-devil"); // load first quiz on page load
+    loadQuiz("angel-vs-devil");
   </script>
-
-<div id="haunted-popup" style="display:none; position:fixed; top:50px; left:50px; padding:20px; background:#000; color:#fff; border:2px dashed #fc53ad; z-index:9999; font-family:'Orbitron', sans-serif;">
-  👻 Haunted Pop-Up: You've been cursed for your greed!
-</div>
-
-<div id="advert-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:300px; padding:20px; background:#ff00ff; color:#000; border:3px solid #00ffff; z-index:9999; font-family:'Orbitron', sans-serif; box-shadow:0 0 10px #00ffff;">
-  <h2 style="margin-top:0;">❌ERROR 2001❌:</h2>
-  <p style="margin:10px 0;">
-    Too Much Gossip Detected!
-    Your hard drive is overheating from all this tea.
-    Please forward this site to 3 friends to cool it down 💾
-  </p>
-  <button onclick="document.getElementById('advert-popup').style.display='none';" style="background:#00ffff; color:#000; border:none; padding:5px 10px; font-family:'Orbitron', sans-serif; cursor:pointer;">
-    Close
-  </button>
-</div>
-
+  
+  <div id="haunted-popup" style="display:none; position:fixed; top:50px; left:50px; padding:20px; background:#000; color:#fff; border:2px dashed #fc53ad; z-index:9999; font-family:'Orbitron', sans-serif;">
+    👻 Haunted Pop-Up: You've been cursed for your greed!
+  </div>
+  
+  <div id="advert-popup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); width:300px; padding:20px; background:#ff00ff; color:#000; border:3px solid #00ffff; z-index:9999; font-family:'Orbitron', sans-serif; box-shadow:0 0 10px #00ffff;">
+    <h2 style="margin-top:0;">❌ERROR 2001❌:</h2>
+    <p style="margin:10px 0;">
+      Too Much Gossip Detected!
+      Your hard drive is overheating from all this tea.
+      Please forward this site to 3 friends to cool it down 💾
+    </p>
+    <button onclick="document.getElementById('advert-popup').style.display='none';" style="background:#00ffff; color:#000; border:none; padding:5px 10px; font-family:'Orbitron', sans-serif; cursor:pointer;">
+      Close
+    </button>
+  </div>
 </body>
 </html>

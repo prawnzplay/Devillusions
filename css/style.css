@@ -38,15 +38,14 @@
   position: absolute;
   white-space: nowrap;
   font-weight: bold;
-  font-size: 1.5em;  /* Desktop marquee text size */
+  font-size: 1.5em;
   color: #531749;
-  /* Desktop marquee: animates from left to right and back */
   animation: desktopMarquee 6s ease-in-out infinite alternate;
 }
 
 @keyframes desktopMarquee {
   0%   { left: 0; }
-  100% { left: calc(100% - 300px); } /* Adjust this offset based on your text width */
+  100% { left: calc(100% - 300px); }
 }
 
 /* =========================
@@ -58,12 +57,11 @@
   padding: 10px 0;
   display: flex;
   justify-content: center;
-  gap: 80px;  /* Space between icons */
+  gap: 80px;
   margin-bottom: 0;
 }
 
 .tab-icon {
-  /* Set desktop nav icon size */
   width: 120px;
   height: auto;
   transition: transform 0.2s ease-in-out;
@@ -76,10 +74,9 @@
 }
 
 /* =========================
-   CONTAINER TITLES & ARTICLE LINK UNDERLINE
+   CONTAINER TITLES
 ========================= */
 
-/* Container titles for sections */
 .section-title {
   font-family: "Chewy", cursive;
   text-align: center;
@@ -89,87 +86,104 @@
   margin: 20px 0;
 }
 
-/* Optional extra styling for quiz title */
-.quiz-title {
-  margin-top: 0;
-}
-
-/* Article title links with an underline */
-.article-box h3 a {
-  font-family: "Chewy", cursive;
-  text-decoration: none;
-  color: #fc53ad;
-  font-size: 1.4em;
-  border-bottom: 2px solid #fc53ad;
-  padding-bottom: 4px;
-  transition: border-color 0.2s ease-in-out;
-}
-
-.article-box h3 a:hover {
-  border-color: #531749;
-}
-
 /* =========================
    MAIN CONTAINER & CONTENT
 ========================= */
 
+/* Reduced vertical margin from 40px -> 20px */
 .main-container {
   display: grid;
-  grid-template-columns: 2fr 1fr; /* Left and right columns */
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
   width: 90%;
   max-width: 1200px;
-  margin: 40px auto;
+  margin: 20px auto;  /* less vertical space */
 }
 
 .left-column {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Spacing between news and bottom items */
+  gap: 20px;
 }
 
+/* Reduced padding in .news-section from 10px -> 8px */
 .news-section {
   background-color: #ffe4e1;
   border-radius: 10px;
-  padding: 10px;
+  padding: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-.news-inner {
+/* =========================
+   DYNAMIC ARTICLE GRID (FLIPBOOK STYLE)
+========================= */
+
+/* #article-grid: Reduced padding from 20px -> 10px */
+#article-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* also slightly reduced gap */
+  padding: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Each article card – reduced padding from 20px -> 15px */
+.article-card {
   background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  color: #4b004b;
-}
-
-/* Flipbook pages */
-.page {
-  display: none;
-  margin-bottom: 20px;
-}
-.page.active {
-  display: block;
-}
-
-/* Article Box */
-.article-box {
-  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 15px; /* tightened up from 20px */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   text-align: center;
+  transition: transform 0.2s;
 }
 
-.article-box p {
-  font-size: 1em;
-  line-height: 1.5em;
-  margin: 10px 0;
+.article-card:hover {
+  transform: scale(1.02);
 }
 
-/* Flipbook Controls */
+/* Heading & Paragraph: same text sizes, but smaller padding -> less vertical space */
+.article-card h3 {
+  font-family: "Chewy", cursive;
+  color: #fc53ad;
+  margin: 10px 0 5px;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #fc53ad;
+  padding-bottom: 4px;
+}
+
+.article-card p {
+  font-family: "Syne", sans-serif;
+  font-size: 1.1rem;
+  color: #333;
+  margin: 10px 0 0;
+}
+
+/* Remove underline from links */
+.article-card a {
+  text-decoration: none;
+  border-bottom: none;
+  color: inherit;
+}
+
+/* =========================
+   FLIPBOOK CONTROLS
+========================= */
+
+/* No major changes here, but you can reduce margin if needed */
 .flipbook-controls {
   text-align: center;
-  margin-bottom: 10px;
+  margin: 15px 0; /* slightly reduced from 20px */
 }
 
-/* BOTTOM ITEMS */
+
+/* =========================
+   BOTTOM ITEMS
+========================= */
+
+/* Slightly reduced padding from 20px -> 15px 
+   to keep everything consistent
+*/
 .bottom-items {
   display: flex;
   width: 100%;
@@ -183,24 +197,33 @@
   color: #fc53ad;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  padding: 20px;
+  padding: 15px; /* reduced from 20px */
   text-align: center;
   font-family: "Orbitron", sans-serif;
   flex: 1;
 }
 
-/* RIGHT COLUMN: Quiz Container */
+/* =========================
+   QUIZ CONTAINER
+========================= */
+
+/* Reduced padding from 10px -> 8px to remove extra space under quiz */
 .quiz-container {
   background-color: #ffe4e1;
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px; /* Add this! */
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: fit-content;
 }
 
+/* quiz-inner from 20px -> 15px */
 .quiz-inner {
   background-color: #fff;
   border-radius: 8px;
-  padding: 20px;
+  padding: 15px;
   color: #4b004b;
   text-align: center;
   font-family: "Orbitron", sans-serif;
@@ -211,9 +234,11 @@
 }
 
 /* =========================
-   RESPONSIVE (Mobile)
+   RESPONSIVE (MOBILE)
 ========================= */
 @media (max-width: 768px) {
+
+  /* Single-column layout, smaller overall spacing */
   .main-container {
     grid-template-columns: 1fr;
     margin: 10px auto;
@@ -226,7 +251,7 @@
     padding: 10px;
     background: #ffe4e1;
     border-radius: 10px;
-    gap: 15px; /* More spacing between icons on mobile */
+    gap: 15px;
   }
   
   .tab-icon {
@@ -241,7 +266,6 @@
     height: auto;
   }
   
-  /* Mobile marquee animation override */
   .marquee-text {
     font-size: clamp(16px, 4vw, 24px);
     font-weight: bold;
@@ -256,24 +280,48 @@
     0%, 100% { transform: translateX(-10%); }
     50% { transform: translateX(10%); }
   }
-  
-  .news-inner,
-  .quiz-inner,
+
+  /* Tighter padding in sections */
+  .news-section,
+  .quiz-container,
   .ad-container,
   .game-container {
-    padding: 10px;
+    padding: 6px;  /* slightly smaller for mobile */
     font-size: clamp(0.8rem, 2vw, 1rem);
   }
   
-  .article-box h3 a {
-    font-size: clamp(1rem, 3vw, 1.2rem);
+  /* Article grid & card updates for smaller screens */
+  #article-grid {
+    padding: 6px;
+    gap: 10px;
   }
-  
-  .article-box p {
-    font-size: clamp(0.8rem, 2vw, 1rem);
-    line-height: 1.3em;
+
+  .article-card {
+    padding: 10px;  /* from 15px -> 10px on mobile */
   }
-  
+
+  .article-card h3 {
+    font-size: 1.2rem; /* smaller heading on mobile */
+    padding-bottom: 3px;
+  }
+
+  .article-card p {
+    font-size: 0.95rem; /* slightly smaller text on mobile */
+  }
+
+  .flipbook-controls {
+    margin: 10px 0;
+  }
+
+  .flipbook-controls button {
+    padding: 6px 12px; /* smaller button padding on mobile */
+    margin: 0 3px;
+  }
+
+  .quiz-inner {
+    padding: 10px; /* reduce from 15px on mobile */
+  }
+
   .quiz-container {
     margin: 20px auto 0;
     max-width: 600px;

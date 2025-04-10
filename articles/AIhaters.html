@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News Article</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&Syne&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/Newspage.css">
+</head>
+<body>
+  <header>
+    <img class="back-button" src="../images/back.png" alt="Back" onclick="window.location.href='../gossiptest.html'">
+  </header>
+  <div class="container">
+    <div class="article-container">
+      <article>
+
+        <h1>AI Haters, Touch Grass</h1>
+        <p class="subtitle">By Devillusions — April 2025</p>
+
+        <img class="article-photo" src="../images/NewsPics/angrycat2.jpg" alt="Photograph 1">
+
+        <section class="article-section">
+          <h4 class="section-title">🚨“AI is lazy!”🚨</h4>
+          <p>Apparently, if you use AI for anything, you’re lazy. Because efficiency is bad, I guess? You know what else is lazy? Using autocorrect. Copy-pasting. Hitting CTRL+Z. Should we cancel Microsoft Word while we're at it? Every generation freaks out when new tools make things easier—because they confuse convenience with cheating. But here’s the truth: creativity isn’t defined by how hard you suffer. It's about ideas, not how much carpal tunnel you accumulate getting them out.</p>
+        </section>
+
+        <section class="article-section">
+          <h4 class="section-title">🚨“AI is stealing!”🚨</h4>
+          <p>Ohhhh, this one is their favorite talking point. AI is stealing! Plagiarizing! Taking jobs! Ruining art! But let’s ask a few uncomfortable questions: Ever used a tutorial to learn how to draw or write? Congrats, you learned from other people’s work. Plagiarism? Ever been “inspired” by another artist or writer? Guess what? Your brain is just a biological AI remixing what you’ve seen. Ever used a reference photo? Sampled music? Read a book to learn how to write better? Oh no… you stole “ideas” too?! Hate to break it to you, but ALL creativity is built on learning from what already exists. Humans do it. Machines do it. The difference? You’re just salty AI does it faster.</p>
+        </section>
+
+        <section class="article-section">
+          <h4 class="section-title">🚨“AI Art Has No Soul”🚨</h4>
+          <p>The classic. The go-to. The “my grandpa said the same thing about electric guitars” argument. Haters love to say that AI art isn’t real art because it doesn’t come from a place of human emotion. If the algorithm didn’t cry about its breakup, how can it possibly make something meaningful? But here’s the thing: not all human-made art is that deep either. Not every piece has to be an emotional excavation. Sometimes it's just vibes. AI doesn’t replace emotion—it expands expression.</p>
+        </section>
+
+        <section class="article-section">
+          <h4 class="section-title">🚨“It’s Going to Make Us Dumber”🚨</h4>
+          <p>There’s a belief that if people rely too much on AI, they’ll stop learning how to write, think critically, or be original. “We’re outsourcing our brains!” Never mind the fact that we already rely on technology for everything. GPS to get anywhere. Spellcheck to write anything. TikTok to learn how to do basic chores. If anything, AI gives more people the confidence to start, and isn’t that smarter than never trying at all? The only thing getting dumber is this tired argument.</p>
+        </section>
+
+        <section class="article-section">
+          <h4 class="section-title">🚨 🚨 🚨</h4>
+          <p>So, to the AI haters: we get it. You’re scared. You’re nostalgic. You want to gatekeep creativity like it’s a country club. But progress doesn’t care about your comfort zone. Work and art is changing. and honestly? That’s exciting.</p>
+        </section>
+
+      </article>
+    </div>
+    <aside class="ad-wrapper">
+      <div class="ad-box">
+        <img src="../images/NewsPics/helpline.png" alt="Advertisement 1" style="width: 100%;">
+      </div>
+      <div class="ad-box y2k-survey-box">
+     
+      
+        <div class="survey-ad">
+          <p>Do you support AI art? </p>
+          <button id="survey-yes">Yes</button>
+          <button id="survey-no">No</button>
+          <p id="survey-feedback"></p>
+        </div>
+        <img src="../images/NewsPics/Vote Yes.jpeg" alt="Y2K Doll" class="y2k-doll" style="width: 100%; height: auto; max-height: 250px;">
+      </div>
+    
+      
+      <script>
+        // Listen for clicks on the survey buttons
+        document.getElementById('survey-yes').addEventListener('click', function() {
+          document.getElementById('survey-feedback').textContent = "We’ll notify the AI overlords of your loyalty. Rewards pending.";
+        });
+        document.getElementById('survey-no').addEventListener('click', function() {
+          document.getElementById('survey-feedback').textContent = "You may be entitled to compensation for this opinion. Call the hotline";
+        });
+      </script>
+
+    </aside>
+  </div>
+</body>
+</html>
